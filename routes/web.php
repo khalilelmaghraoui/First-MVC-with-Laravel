@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/about', function () {
+    return "about page";
+});
+//Route::get('/contact', function () {
+//    return "contact page";
+//});
+//Route::get('admin/post/example',Array('as'=>'admin.home',function(){
+//    $url = route('admin.home');
+//    return "the URL " .  $url ;
+//
+//}));
+//Route::get('/post/{id}',[PostsController::class ,'index']);
+Route::resource('posts',PostsController::class);
+
+
