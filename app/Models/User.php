@@ -40,4 +40,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function post()
+    {
+        return $this->hasOne('App\Models\Post'); // gonna lock for user_id by default , if we want to
+      //  return $this->hasOne('app\Models\Post','other_name');      // change the name we need  add another parameter to the method 'hasOne like'
+    }
+    public function posts(){
+
+        return $this->hasMany('App\Models\Post');
+
+    }
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role')->withPivot('created_at');
+    }
 }
